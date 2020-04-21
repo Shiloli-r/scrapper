@@ -10,7 +10,6 @@ BASE_URL = 'https://losangeles.craigslist.org/search/?query={}'
 BASE_IMAGE_URL = 'https://images.craiglist.org/{}_300x300.jpg'
 
 
-
 # Create your views here.
 def home(request):
     return render(request, 'base.html')
@@ -37,10 +36,10 @@ def new_search(request):
         if post.find(class_='result-image').get('data-ids'):
             post_image_id = post.find(class_='result-image').get('data-ids').split(',')[0].split(':')[1]  # gets img id
             post_image_url = BASE_IMAGE_URL.format(post_image_id)
-            print(post_image_id, post_image_url)
+            print(post_image_url)
         else:
-            post_image_url = "https://craiglist.org/images/peace.jpg"
-            # https://losangeles.craigslist.org/images/peace.jpg
+            post_image_url = 'https://craigslist.org/images/peace.jpg'
+
 
         postings.append((post_title, post_url, post_price, post_image_url))  # append a tuple to the postings list
 
